@@ -16,8 +16,8 @@ class CreateEventAgentsTable extends Migration
         Schema::create('event_agents', function (Blueprint $table) {
             $table->id();
             $table->string('country',255);
-            $table->string('POC',255)->nullable();
-            $table->string('agent',255)->nullable();
+            $table->string('agent_name',255)->nullable();
+            $table->string('company',255)->nullable();
             $table->string('address',255)->nullable();
             $table->string('phone',255)->nullable();
             $table->string('mobile',255)->nullable();

@@ -3,11 +3,10 @@
 namespace Aaw0\EventAgents;
 
 use App\Nova\Resource;
-use Emilianotisato\NovaTinyMCE\NovaTinyMCE;
 use Illuminate\Http\Request;
 use Laravel\Nova\Fields\ID;
 use Laravel\Nova\Http\Requests\NovaRequest;
-use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Boolean;
 use Laravel\Nova\Fields\Number;
 use Laravel\Nova\Fields\Select;
 use Laravel\Nova\Fields\Text;
@@ -29,7 +28,7 @@ class EventAgent extends Resource
      *
      * @var string
      */
-    public static $title = 'title';
+    public static $title = 'country';
 
     /**
      * The columns that should be searched.
@@ -37,7 +36,7 @@ class EventAgent extends Resource
      * @var array
      */
     public static $search = [
-        'id','title_ar','title_en'
+        'id','country','name','company','email'
     ];
 
     /**
@@ -50,35 +49,22 @@ class EventAgent extends Resource
     {
         return [
             ID::make(__('ID'), 'id')->sortable(),
-            Image::make('Image')->disk('public')->required(),
-            Image::make('Image Webp')->disk('public')->hideFromIndex()->nullable()
-            ->help('Please upload .Webp image if you have it, you can create one online,
-            <a href="https://image.online-convert.com/convert-to-webp" target="_blank" rel="noopener noreferrer">
-            https://image.online-convert.com/convert-to-webp</a> '),
-            Text::make('Title')->onlyOnIndex(),
-            Select::make('Image Bg')->options([
-                'carousel-bg-gray'=>'Gray',
-                'carousel-bg-Black'=>'Black',
-                'carousel-bg-blue'=>'Blue',
-                'carousel-bg-blue-2'=>'Blue 2',
-                'carousel-bg-blue-3'=>'Blue 3',
-                'carousel-bg-red'=>'Red',
-                'carousel-bg-orange'=>'Orange',
-                'carousel-bg-gold'=>'Gold',
-                'carousel-bg-olive'=>'Olive',
-                'carousel-bg-purple'=>'Purple',
+            Boolean::make('Is Published')->sortable(),
+            Select::make('Type')->options([
+                'Agent / CP Organizers'=>'Agent / CP Organizers',
             ])->hideFromIndex(),
-            Text::make('Title Ar')->nullable()->rules(['max:255'])->hideFromIndex(),
-            Text::make('Title En')->required()->rules(['max:255'])->hideFromIndex(),
-            Text::make('Link')->rules(['max:255'])->required()->hideFromIndex(),
-            Text::make('Link Text Ar')->rules(['max:255'])->default('Learn More')->hideFromIndex(),
-            Text::make('Link Text En')->required()->rules(['max:255'])->default('Learn More')->hideFromIndex(),
-            Text::make('Color Class')->rules(['max:255'])->default('text-white')->hideFromIndex(),
-            Text::make('Position')->rules(['max:255'])->default('center center')->hideFromIndex(),
+            Text::make('Country')->required()->rules(['max:255'])->hideFromIndex(),
+            Text::make('Name')->nullable()->rules(['max:255'])->hideFromIndex(),
+            Text::make('Company')->nullable()->rules(['max:255'])->hideFromIndex(),
+            Text::make('Address')->nullable()->rules(['max:255'])->hideFromIndex(),
+            Text::make('Phone')->nullable()->rules(['max:255'])->hideFromIndex(),
+            Text::make('Mobile')->nullable()->rules(['max:255'])->hideFromIndex(),
+            Text::make('Fax')->nullable()->rules(['max:255'])->hideFromIndex(),
+            Text::make('Email')->nullable()->rules(['max:255'])->hideFromIndex(),
+            Text::make('Type')->nullable()->rules(['max:255'])->hideFromIndex(),
+            Text::make('Css Class')->nullable()->rules(['max:255'])->hideFromIndex(),
+            Text::make('Bg Color')->nullable()->rules(['max:255'])->hideFromIndex(),
             Number::make('Sort Order')->onlyOnIndex(),
-            NovaTinyMCE::make('Content Ar')->nullable()->options(['use_lfm' => true])->hideFromIndex(),
-            NovaTinyMCE::make('Content En')->nullable()->options(['use_lfm' => true])->hideFromIndex(),
-
 
         ];
     }
