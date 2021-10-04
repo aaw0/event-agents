@@ -21,7 +21,6 @@ class EventAgent extends Resource
      * @var string
      */
     public static $model = \Aaw0\EventAgents\Models\EventAgent::class;
-    // public static $model = \App\Models\Slide::class;
 
     /**
      * The single value that should be used to represent the resource when being displayed.
