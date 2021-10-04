@@ -1,0 +1,19 @@
+{
+    "name": "aaw0/event-agents",
+    "description": "Event Agents list for Exhibitions, used usually for idex, navdex, simtex, and isnr.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "AliAwwadADNEC",
+            "email": "ali.awwad@adnec.ae"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Aaw0\\EventAgents\\": "src/"
+        }
+    }
+}
