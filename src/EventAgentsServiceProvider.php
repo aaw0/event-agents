@@ -5,7 +5,7 @@ namespace Aaw0\EventAgents;
 use Illuminate\Support\ServiceProvider;
 use Laravel\Nova\Nova;
 
-class AdnecSlidersServiceProvider extends ServiceProvider
+class EventAgentsServiceProvider extends ServiceProvider
 {
     public function boot()
     {
