@@ -52,9 +52,9 @@ class EventAgent extends Resource
             Select::make('Type')->options([
                 'Agent / CP Organizers'=>'Agent / CP Organizers',
             ])->hideFromIndex(),
-            Text::make('Country')->required()->rules(['max:255'])->hideFromIndex(),
+            Text::make('Country')->required()->rules(['max:255']),
             Text::make('Agent Name')->nullable()->rules(['max:255'])->hideFromIndex(),
-            Text::make('Company')->nullable()->rules(['max:255'])->hideFromIndex(),
+            Text::make('Company')->nullable()->rules(['max:255']),
             Text::make('Address')->nullable()->rules(['max:255'])->hideFromIndex(),
             Text::make('Phone')->nullable()->rules(['max:255'])->hideFromIndex(),
             Text::make('Mobile')->nullable()->rules(['max:255'])->hideFromIndex(),
